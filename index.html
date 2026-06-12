@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приватний ПК Майстер | Київ</title>
+    <title id="page-title">Приватний ПК Майстер | Київ</title>
     <!-- Підключення сучасного шрифту -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Підключення іконок -->
@@ -67,6 +67,12 @@
             color: var(--accent);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .nav-links a {
             color: var(--text-main);
             text-decoration: none;
@@ -77,6 +83,33 @@
 
         .nav-links a:hover {
             color: var(--accent);
+        }
+
+        /* Перемикач мов */
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+            background: var(--bg-card);
+            padding: 4px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: #0f172a;
         }
 
         /* Головний екран */
@@ -198,12 +231,13 @@
             margin-bottom: 15px;
             font-size: 16px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
         }
 
         .conditions li i {
             color: var(--accent);
+            margin-top: 5px;
         }
 
         /* Підвал і контакти */
@@ -247,7 +281,7 @@
         /* Адаптивність для мобільних */
         @media (max-width: 768px) {
             .hero h1 { font-size: 36px; }
-            .nav-links { display: none; } /* Для простоти на мобілках ховаємо меню, залишаємо лого */
+            .nav-links { display: none; }
             .contact-info { flex-direction: column; gap: 15px; }
         }
     </style>
@@ -257,67 +291,76 @@
 <!-- Навігація -->
 <header>
     <div class="nav-container">
-        <a href="#" class="logo"><i class="fa-solid fa-microchip"></i> ПК Майстер</a>
-        <div class="nav-links">
-            <a href="#services">Послуги та ціни</a>
-            <a href="#conditions">Умови</a>
-            <a href="#contacts">Контакти</a>
+        <a href="#" class="logo"><i class="fa-solid fa-microchip"></i> <span class="lang" data-uk="ПК Майстер" data-ru="ПК Мастер" data-en="PC Master">ПК Майстер</span></a>
+
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#services" class="lang" data-uk="Послуги та ціни" data-ru="Услуги и цены" data-en="Services & Prices">Послуги та ціни</a>
+                <a href="#conditions" class="lang" data-uk="Умови" data-ru="Условия" data-en="Terms">Умови</a>
+                <a href="#contacts" class="lang" data-uk="Контакти" data-ru="Контакты" data-en="Contacts">Контакти</a>
+            </div>
+            <!-- Перемикач мови -->
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="setLang('uk')" id="btn-uk">UA</button>
+                <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+                <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">RU</button>
+            </div>
         </div>
     </div>
 </header>
 
 <!-- Головний екран -->
 <section class="hero">
-    <h1>Чесний ремонт та збірка ПК у <span>Києві</span></h1>
-    <p>Без прихованих платежів, надуманих проблем та "космічних" чеків. Працюю на репутацію. Можливий виїзд на авто по Києву або віддалена підтримка.</p>
-    <a href="#contacts" class="btn">Зв'язатися зі мною</a>
+    <h1 class="lang" data-uk="Чесний ремонт та збірка ПК у <span>Києві</span>" data-ru="Честный ремонт и сборка ПК в <span>Киеве</span>" data-en="Honest PC repair and assembly in <span>Kyiv</span>">Чесний ремонт та збірка ПК у <span>Києві</span></h1>
+    <p class="lang" data-uk="Без прихованих платежів, надуманих проблем та «космічних» чеків. Працюю на репутацію. Можливий виїзд на авто по Києву або віддалена підтримка." data-ru="Без скрытых платежей, надуманных проблем и «космических» чеков. Работаю на репутацию. Возможен выезд на авто по Киеву или удаленная поддержка." data-en="No hidden fees, imaginary problems, or astronomical bills. I work for reputation. On-site visits by car in Kyiv or remote support available.">Без прихованих платежів, надуманих проблем та «космічних» чеків. Працюю на репутацію. Можливий виїзд на авто по Києву або віддалена підтримка.</p>
+    <a href="#contacts" class="btn lang" data-uk="Зв'язатися зі мною" data-ru="Связаться со мной" data-en="Contact me">Зв'язатися зі мною</a>
 </section>
 
 <!-- Послуги та ціни -->
 <section id="services" class="services">
-    <h2 class="section-title">Прайс-лист</h2>
+    <h2 class="section-title lang" data-uk="Прайс-лист" data-ru="Прайс-лист" data-en="Price List">Прайс-лист</h2>
     <div class="grid">
 
         <div class="card">
             <i class="fa-solid fa-screwdriver-wrench"></i>
-            <h3>Збірка ПК</h3>
-            <p>Професійна збірка з нуля, кабель-менеджмент, стрес-тести та оптимізація.</p>
-            <div class="price">10% від бюджету</div>
+            <h3 class="lang" data-uk="Збірка ПК" data-ru="Сборка ПК" data-en="PC Assembly">Збірка ПК</h3>
+            <p class="lang" data-uk="Професійна збірка з нуля, кабель-менеджмент, стрес-тести та оптимізація." data-ru="Профессиональная сборка с нуля, кабель-менеджмент, стресс-тесты и оптимизация." data-en="Professional build from scratch, cable management, stress tests, and optimization.">Професійна збірка з нуля, кабель-менеджмент, стрес-тести та оптимізація.</p>
+            <div class="price lang" data-uk="10% від бюджету" data-ru="10% от бюджета" data-en="10% of the budget">10% від бюджету</div>
         </div>
 
         <div class="card">
             <i class="fa-solid fa-memory"></i>
-            <h3>Оновлення (Апгрейд)</h3>
-            <p>Підбір сумісних комплектуючих та їх встановлення у ваш поточний комп'ютер.</p>
-            <div class="price">10% від суми запчастин</div>
+            <h3 class="lang" data-uk="Оновлення (Апгрейд)" data-ru="Обновление (Апгрейд)" data-en="PC Upgrade">Оновлення (Апгрейд)</h3>
+            <p class="lang" data-uk="Підбір сумісних комплектуючих та їх встановлення у ваш поточний комп'ютер." data-ru="Подбор совместимых комплектующих и их установка в ваш текущий компьютер." data-en="Selection of compatible components and their installation into your current computer.">Підбір сумісних комплектуючих та їх встановлення у ваш поточний комп'ютер.</p>
+            <div class="price lang" data-uk="10% від суми запчастин" data-ru="10% от суммы запчастей" data-en="10% of parts cost">10% від суми запчастин</div>
         </div>
 
         <div class="card">
             <i class="fa-solid fa-fan"></i>
-            <h3>Технічне обслуговування</h3>
-            <p>Повна чистка від пилу, заміна термопасти. Зниження температур та шуму.</p>
-            <div class="price">400 грн</div>
+            <h3 class="lang" data-uk="Технічне обслуговування" data-ru="Техническое обслуживание" data-en="Maintenance">Технічне обслуговування</h3>
+            <p class="lang" data-uk="Повна чистка від пилу, заміна термопасти. Зниження температур та шуму." data-ru="Полная чистка от пыли, замена термопасты. Снижение температур и шума." data-en="Full dust cleaning, thermal paste replacement. Temperature and noise reduction.">Повна чистка від пилу, заміна термопасти. Зниження температур та шуму.</p>
+            <div class="price lang" data-uk="400 грн" data-ru="400 грн" data-en="$10">400 грн</div>
         </div>
 
         <div class="card">
             <i class="fa-brands fa-windows"></i>
-            <h3>Встановлення Windows</h3>
-            <p>Встановлення ОС, всіх необхідних драйверів та базового пакету програм.</p>
-            <div class="price">400 грн</div>
+            <h3 class="lang" data-uk="Встановлення Windows" data-ru="Установка Windows" data-en="Windows Installation">Встановлення Windows</h3>
+            <p class="lang" data-uk="Встановлення ОС, всіх необхідних драйверів та базового пакету програм." data-ru="Установка ОС, всех необходимых драйверов и базового пакета программ." data-en="OS installation, all necessary drivers, and basic software package.">Встановлення ОС, всіх необхідних драйверів та базового пакету програм.</p>
+            <div class="price lang" data-uk="400 грн" data-ru="400 грн" data-en="$10">400 грн</div>
         </div>
 
         <div class="card">
             <i class="fa-solid fa-wifi"></i>
-            <h3>Налаштування роутерів</h3>
-            <p>Налаштування Wi-Fi, безпеки мережі, підключення до провайдера.</p>
-            <div class="price">300 грн</div>
+            <h3 class="lang" data-uk="Налаштування роутерів" data-ru="Настройка роутеров" data-en="Router Setup">Налаштування роутерів</h3>
+            <p class="lang" data-uk="Налаштування Wi-Fi, безпеки мережі, підключення до провайдера." data-ru="Настройка Wi-Fi, безопасности сети, подключение к провайдеру." data-en="Wi-Fi setup, network security, connecting to the provider.">Налаштування Wi-Fi, безпеки мережі, підключення до провайдера.</p>
+            <div class="price lang" data-uk="300 грн" data-ru="300 грн" data-en="$8">300 грн</div>
         </div>
 
         <div class="card">
             <i class="fa-solid fa-shield-virus"></i>
-            <h3>Очищення від вірусів</h3>
-            <p>Видалення троянів, майнерів, рекламного ПЗ та загальна оптимізація системи.</p>
-            <div class="price">200 грн</div>
+            <h3 class="lang" data-uk="Очищення від вірусів" data-ru="Очистка от вирусов" data-en="Virus Removal">Очищення від вірусів</h3>
+            <p class="lang" data-uk="Видалення троянів, майнерів, рекламного ПЗ та загальна оптимізація системи." data-ru="Удаление троянов, майнеров, рекламного ПО и общая оптимизация системы." data-en="Removal of trojans, miners, adware, and overall system optimization.">Видалення троянів, майнерів, рекламного ПЗ та загальна оптимізація системи.</p>
+            <div class="price lang" data-uk="200 грн" data-ru="200 грн" data-en="$5">200 грн</div>
         </div>
 
     </div>
@@ -325,35 +368,42 @@
 
 <!-- Важливі умови -->
 <section id="conditions" class="conditions">
-    <h3><i class="fa-solid fa-circle-info"></i> Як я працюю</h3>
+    <h3 class="lang" data-uk="<i class='fa-solid fa-circle-info'></i> Як я працюю" data-ru="<i class='fa-solid fa-circle-info'></i> Как я работаю" data-en="<i class='fa-solid fa-circle-info'></i> How I work"><i class="fa-solid fa-circle-info"></i> Як я працюю</h3>
     <ul>
-        <li><i class="fa-solid fa-check"></i> <strong>Діагностика:</strong> Безкоштовно — за умови подальшого замовлення послуг. Якщо потрібна лише діагностика без ремонту — 200 грн.</li>
-        <li><i class="fa-solid fa-car"></i> <strong>Виїзд по Києву:</strong> Виїжджаю у будь-який район міста (вартість виїзду обговорюється індивідуально залежно від вашої локації).</li>
-        <li><i class="fa-solid fa-laptop-code"></i> <strong>Віддалена підтримка:</strong> Дрібні програмні несправності можу вирішити віддалено через AnyDesk або RustDesk.</li>
-        <li><i class="fa-solid fa-handshake"></i> <strong>Чесність:</strong> Ви завжди знаєте кінцеву вартість до початку робіт.</li>
+        <li class="lang" data-uk="<i class='fa-solid fa-check'></i> <div><strong>Діагностика:</strong> Безкоштовно — за умови подальшого замовлення послуг. Якщо потрібна лише діагностика без ремонту — 200 грн.</div>" data-ru="<i class='fa-solid fa-check'></i> <div><strong>Диагностика:</strong> Бесплатно — при условии дальнейшего заказа услуг. Если нужна только диагностика без ремонта — 200 грн.</div>" data-en="<i class='fa-solid fa-check'></i> <div><strong>Diagnostics:</strong> Free — subject to subsequent ordering of services. If only diagnostics without repair is needed — $5.</div>">
+            <i class="fa-solid fa-check"></i> <div><strong>Діагностика:</strong> Безкоштовно — за умови подальшого замовлення послуг. Якщо потрібна лише діагностика без ремонту — 200 грн.</div>
+        </li>
+        <li class="lang" data-uk="<i class='fa-solid fa-car'></i> <div><strong>Виїзд по Києву:</strong> Виїжджаю у будь-який район міста (вартість виїзду обговорюється індивідуально залежно від вашої локації).</div>" data-ru="<i class='fa-solid fa-car'></i> <div><strong>Выезд по Киеву:</strong> Выезжаю в любой район города (стоимость выезда обсуждается индивидуально в зависимости от вашей локации).</div>" data-en="<i class='fa-solid fa-car'></i> <div><strong>On-site in Kyiv:</strong> I travel to any district of the city (travel cost is discussed individually depending on your location).</div>">
+            <i class="fa-solid fa-car"></i> <div><strong>Виїзд по Києву:</strong> Виїжджаю у будь-який район міста (вартість виїзду обговорюється індивідуально залежно від вашої локації).</div>
+        </li>
+        <li class="lang" data-uk="<i class='fa-solid fa-laptop-code'></i> <div><strong>Віддалена підтримка:</strong> Дрібні програмні несправності можу вирішити віддалено через AnyDesk або RustDesk.</div>" data-ru="<i class='fa-solid fa-laptop-code'></i> <div><strong>Удаленная поддержка:</strong> Мелкие программные неисправности могу решить удаленно через AnyDesk или RustDesk.</div>" data-en="<i class='fa-solid fa-laptop-code'></i> <div><strong>Remote support:</strong> Minor software issues can be resolved remotely via AnyDesk or RustDesk.</div>">
+            <i class="fa-solid fa-laptop-code"></i> <div><strong>Віддалена підтримка:</strong> Дрібні програмні несправності можу вирішити віддалено через AnyDesk або RustDesk.</div>
+        </li>
+        <li class="lang" data-uk="<i class='fa-solid fa-handshake'></i> <div><strong>Чесність:</strong> Ви завжди знаєте кінцеву вартість до початку робіт.</div>" data-ru="<i class='fa-solid fa-handshake'></i> <div><strong>Честность:</strong> Вы всегда знаете конечную стоимость до начала работ.</div>" data-en="<i class='fa-solid fa-handshake'></i> <div><strong>Honesty:</strong> You always know the final cost before the work starts.</div>">
+            <i class="fa-solid fa-handshake"></i> <div><strong>Чесність:</strong> Ви завжди знаєте кінцеву вартість до початку робіт.</div>
+        </li>
     </ul>
 </section>
 
 <!-- Контакти -->
 <footer id="contacts">
-    <h2 class="section-title" style="margin-bottom: 30px;">Зв'яжіться зі мною</h2>
+    <h2 class="section-title lang" style="margin-bottom: 30px;" data-uk="Зв'яжіться зі мною" data-ru="Свяжитесь со мной" data-en="Contact me">Зв'яжіться зі мною</h2>
     <div class="contact-info">
-        <!-- Заглушка для Телеграму -->
         <div class="contact-item">
             <i class="fa-brands fa-telegram"></i>
             <a href="https://t.me/chebure4enno" target="_blank">@chebure4enno</a>
         </div>
-        <!-- Заглушка для Телефону -->
         <div class="contact-item">
             <i class="fa-solid fa-phone"></i>
             <a href="tel:+380661761856">+38 (066) 176-18-56</a>
         </div>
     </div>
-    <p style="color: var(--text-muted); margin-top: 20px;">Працюю по всьому Києву. Звертайтесь, буду радий допомогти!</p>
+    <p class="lang" style="color: var(--text-muted); margin-top: 20px;" data-uk="Працюю по всьому Києву. Звертайтесь, буду радий допомогти!" data-ru="Работаю по всему Киеву. Обращайтесь, буду рад помочь!" data-en="I work throughout Kyiv. Feel free to reach out, I'll be glad to help!">Працюю по всьому Києву. Звертайтесь, буду радий допомогти!</p>
 </footer>
 
-<!-- Плавна прокрутка до якорів -->
+<!-- Скрипти -->
 <script>
+    // Плавна прокрутка до якорів
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -361,6 +411,42 @@
                 behavior: 'smooth'
             });
         });
+    });
+
+    // Система перемикання мов
+    const titleTranslations = {
+        'uk': 'Приватний ПК Майстер | Київ',
+        'en': 'Private PC Master | Kyiv',
+        'ru': 'Частный ПК Мастер | Киев'
+    };
+
+    function setLang(lang) {
+        // Змінюємо текст всередині елементів з класом .lang
+        const elements = document.querySelectorAll('.lang');
+        elements.forEach(el => {
+            if (el.getAttribute(`data-${lang}`)) {
+                el.innerHTML = el.getAttribute(`data-${lang}`);
+            }
+        });
+
+        // Змінюємо Title сторінки
+        document.getElementById('page-title').innerText = titleTranslations[lang];
+        document.documentElement.lang = lang;
+
+        // Оновлюємо активну кнопку
+        document.getElementById('btn-uk').classList.remove('active');
+        document.getElementById('btn-en').classList.remove('active');
+        document.getElementById('btn-ru').classList.remove('active');
+        document.getElementById(`btn-${lang}`).classList.add('active');
+
+        // Зберігаємо вибір користувача у браузері
+        localStorage.setItem('selectedLang', lang);
+    }
+
+    // Перевірка збереженої мови при завантаженні сторінки
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem('selectedLang') || 'uk';
+        setLang(savedLang);
     });
 </script>
 </body>
